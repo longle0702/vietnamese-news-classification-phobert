@@ -39,9 +39,11 @@ The model classifies articles into the following 10 Vietnamese news topics:
 
 ```
 vietnamese-news-classification-transformer/
-├── clean-data/                  # Preprocessed datasets (Available on request)
-│   ├── train/                   # Source for Validation + Test data (~33k articles)
-│   └── test/                    # Source for Training data (~50k articles)*
+├── Train_Full/                  # [Ignored] Raw source for Validation + Test data
+├── Test_Full/                   # [Ignored] Raw source for Training data*
+├── clean-data/                  # [Ignored] Preprocessed datasets (Available on request)
+│   ├── train/                   # Processed Validation + Test data (~33k articles)
+│   └── test/                    # Processed Training data (~50k articles)*
 ├── src/
 │   ├── preprocessing.py         # Vietnamese text normalisation, segmentation, TF-IDF utilities
 │   ├── prepare_data.py          # Dataset loader and train/val/test splitter
@@ -54,7 +56,7 @@ vietnamese-news-classification-transformer/
 │   ├── label_map.json           # Category → integer label mapping
 │   ├── confusion_matrix.png     # Per-class confusion matrix on the test set
 │   ├── training_history.csv     # Per-epoch metrics (loss, acc, precision, recall, F1)
-│   └── training_log.txt         # Full training log
+│   └── training_log.txt         # Full training log      
 ├── dictionary.txt               # Filtered vocabulary built from training data
 ├── stopword.txt                 # Vietnamese stopword list
 ├── requirements.txt
@@ -96,26 +98,13 @@ Training was run for **5 epochs** (early stopping triggered after epoch 5 due to
 ## ⚙️ Requirements
 
 - Python 3.10+
-- CUDA-capable GPU (recommended; CPU inference is possible but slow)
+- CUDA-capable GPU
 
 Install all dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
-
-Key dependencies:
-
-| Package | Version |
-|---------|---------|
-| torch | ≥ 2.0.0 |
-| transformers | ≥ 4.40.0 |
-| accelerate | ≥ 0.29.0 |
-| sentencepiece | ≥ 0.1.99 |
-| scikit-learn | 1.8.0 |
-| pyvi | 0.1.1 |
-| pandas | 3.0.1 |
-| matplotlib | ≥ 3.7.0 |
 
 ---
 
