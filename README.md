@@ -61,7 +61,7 @@ vietnamese-news-classification-transformer/
 └── README.md
 ```
 
-** Note on Data Split:** To maximize the model's learning capacity, the folders have been swapped: clean-data/test/ is used as the primary Training source (approx. 50k articles), while clean-data/train/ serves as the source for Validation and Testing (approx. 33k articles).
+**Note on Data Split:** To maximize the model's learning capacity, the folders have been swapped: clean-data/test/ is used as the primary Training source (approx. 50k articles), while clean-data/train/ serves as the source for Validation and Testing (approx. 33k articles).
 
 ---
 
