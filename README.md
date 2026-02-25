@@ -1,18 +1,18 @@
-# 🇻🇳 Vietnamese News Classification with PhoBERT
+# 🇻🇳 Vietnamese News Classification with PhoBERT v2
 
-A Vietnamese news article classifier fine-tuned on **PhoBERT** (`vinai/phobert-base`) that categorises articles into **10 topics** with a weighted F1-score of **91.4%** on the held-out test set. This project is an upgraded continuation of my earlier NLP classification work during my Bachelor's studies.
+A Vietnamese news article classifier fine-tuned on **PhoBERT v2** (`vinai/phobert-base-v2`) that categorises articles into **10 topics** with a weighted F1-score of **91.3%** on the held-out test set. This project is an upgraded continuation of my earlier NLP classification work during my Bachelor's studies.
 
 ---
 
 ## 🧠 Overview
 
-This project fine-tunes [PhoBERT-base](https://huggingface.co/vinai/phobert-base) — a RoBERTa-based language model pre-trained specifically on Vietnamese text — for multi-class news article classification.
+This project fine-tunes [PhoBERT-base-v2](https://huggingface.co/vinai/phobert-base-v2) — a RoBERTa-based language model pre-trained specifically on Vietnamese text — for multi-class news article classification.
 
 **Pipeline at a glance:**
 
 1. Raw Vietnamese news articles are cleaned and tokenised (via `pyvi`) into preprocessed category files under `clean-data/`.
 2. `prepare_data.py` maps the cleaned category files into labelled Pandas DataFrames and performs a stratified train / val / test split.
-3. `train.py` fine-tunes PhoBERT-base using a standard AdamW + linear warmup schedule, with early stopping and best-checkpoint saving.
+3. `train.py` fine-tunes PhoBERT-base-v2 using a standard AdamW + linear warmup schedule, with early stopping and best-checkpoint saving.
 
 ---
 
@@ -76,23 +76,23 @@ Training was run for **5 epochs** (early stopping triggered after epoch 5 due to
 
 | Epoch | Train Loss | Train Acc | Val Loss | Val Acc | Val F1 |
 |-------|-----------|-----------|----------|---------|--------|
-| 1 | 0.8319 | 79.46% | 0.3478 | 89.88% | 89.78% |
-| 2 | 0.2518 | 92.41% | 0.2895 | 91.26% | 91.26% |
-| 3 | 0.1728 | 94.86% | 0.3012 | 91.30% | 91.36% |
-| 4 | 0.1269 | 96.31% | 0.3381 | 91.98% | 92.02% |
-| 5 | 0.0969 | 97.46% | 0.3912 | 92.00% | 91.99% |
+| 1 | 0.9006 | 80.60% | 0.3681 | 90.12% | 90.14% |
+| 2 | 0.2683 | 92.34% | 0.2917 | 91.10% | 91.14% |
+| 3 | 0.1840 | 94.64% | 0.2940 | 91.73% | 91.74% |
+| 4 | 0.1367 | 96.27% | 0.3210 | 92.16% | 92.15% |
+| 5 | 0.1047 | 97.30% | 0.3600 | 92.28% | 92.31% |
 
 ### 🧾 Test Set Performance (Best Checkpoint — Epoch 2)
 
 | Metric | Score |
 |--------|-------|
-| Loss | 0.2868 |
-| Accuracy | **91.41%** |
+| Loss | 0.2884 |
+| Accuracy | **91.23%** |
 | Weighted Precision | **91.56%** |
-| Weighted Recall | **91.41%** |
-| Weighted F1 | **91.43%** |
+| Weighted Recall | **91.23%** |
+| Weighted F1 | **91.28%** |
 
-> The best model checkpoint was saved at **epoch 2** (lowest val loss: 0.2895). The confusion matrix is saved at `vnct/confusion_matrix.png`.
+> The best model checkpoint was saved at **epoch 2** (lowest val loss: 0.2917). The confusion matrix is saved at `vncp/confusion_matrix.png`.
 
 ---
 
@@ -112,8 +112,8 @@ pip install -r requirements.txt
 ## 🚀 Setup
 
 ```bash
-git clone https://github.com/<your-username>/vietnamese-news-classification-transformer.git
-cd vietnamese-news-classification-transformer
+git clone https://github.com/longle0702/vietnamese-news-classification-phobert.git
+cd vietnamese-news-classification-phobert
 
 python -m venv .venv
 source .venv/bin/activate
@@ -147,10 +147,10 @@ python src/train.py
 This will:
 
 1. Load and label data from `clean-data/test/` (training set, ~50 k articles) and split `clean-data/train/` 50/50 into validation and test sets (~16.9 k each).
-2. Tokenise all splits using the PhoBERT tokenizer (downloaded automatically from the Hugging Face Hub on first run).
-3. Fine-tune `vinai/phobert-base` with AdamW, a linear warmup scheduler, gradient clipping, and early stopping.
-4. Save the best checkpoint to `vnct/best_model/`, the final model to `vnct/`, and the training history to `vnct/training_history.csv`.
-5. Evaluate the best checkpoint on the test set and save the confusion matrix to `vnct/confusion_matrix.png`.
+2. Tokenise all splits using the PhoBERT v2 tokenizer (downloaded automatically from the Hugging Face Hub on first run).
+3. Fine-tune `vinai/phobert-base-v2` with AdamW, a linear warmup scheduler, gradient clipping, and early stopping.
+4. Save the best checkpoint to `vncp/best_model/`, the final model to `vncp/`, and the training history to `vncp/training_history.csv`.
+5. Evaluate the best checkpoint on the test set and save the confusion matrix to `vncp/confusion_matrix.png`.
 
 ### 3. Training Arguments
 
@@ -200,14 +200,14 @@ python src/main.py Đội tuyển Việt Nam thắng 2-0 trước Thái Lan tạ
 ```
 Input : Bjorkan đột ngột rời đi, Knutsen từ vị trí trợ lý HLV được bổ nhiệm làm thuyền trưởng...
 ====================================================================================================
-  [1] The thao                   99.45%  |█████████████████████████████░|
-  [2] Van hoa                     0.14%  |░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
-  [3] Vi tinh                     0.08%  |░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
+  [1] The thao                   98.81%  |█████████████████████████████░|
+  [2] Doi song                    0.24%  |░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
+  [3] Van hoa                     0.21%  |░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
 ====================================================================================================
-→ The thao  (99.45%)
+→ The thao  (98.81%)
 ```
 
-The model always shows the **top-3 predictions** with a confidence bar. The best checkpoint (`vnct/best_model/`) is loaded automatically.
+The model always shows the **top-3 predictions** with a confidence bar. The best checkpoint (`vncp/best_model/`) is loaded automatically.
 
 ---
 
@@ -215,12 +215,12 @@ The model always shows the **top-3 predictions** with a confidence bar. The best
 
 | Path | Description |
 |------|-------------|
-| `vnct/best_model/` | Best checkpoint (by lowest validation loss), loadable with `AutoModelForSequenceClassification.from_pretrained()` |
-| `vnct/model.safetensors` | Final model weights (after all epochs) |
-| `vnct/label_map.json` | JSON mapping of category name → integer label |
-| `vnct/training_history.csv` | CSV with per-epoch `loss`, `acc`, `precision`, `recall`, `f1` for train/val/test splits |
-| `vnct/training_log.txt` | Full timestamped training log |
-| `vnct/confusion_matrix.png` | Confusion matrix of the best model on the test set |
+| `vncp/best_model/` | Best checkpoint (by lowest validation loss), loadable with `AutoModelForSequenceClassification.from_pretrained()` |
+| `vncp/model.safetensors` | Final model weights (after all epochs) |
+| `vncp/label_map.json` | JSON mapping of category name → integer label |
+| `vncp/training_history.csv` | CSV with per-epoch `loss`, `acc`, `precision`, `recall`, `f1` for train/val/test splits |
+| `vncp/training_log.txt` | Full timestamped training log |
+| `vncp/confusion_matrix.png` | Confusion matrix of the best model on the test set |
 
 ## ❤️ Acknowledgements
 I would like to thank my former teammates who contributed to my earlier NLP projects during my Bachelor's journey. Your collaboration, discussions, and support helped lay the foundation for this work.

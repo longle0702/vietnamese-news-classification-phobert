@@ -1,3 +1,4 @@
+#%% Import libraries
 import os
 import json
 import torch
@@ -6,10 +7,9 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import sys
 #%% Paths
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-default_model = os.path.join(project_root, "vnct", "best_model")
-default_label_map = os.path.join(project_root, "vnct", "label_map.json")
+default_model = os.path.join(project_root, "vncp", "best_model")
+default_label_map = os.path.join(project_root, "vncp", "label_map.json")
 max_len = 256
-
 
 #%% Helpers
 def load_label_map(label_map_path):

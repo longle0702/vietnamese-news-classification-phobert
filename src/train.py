@@ -1,5 +1,5 @@
 
-#%% Imports
+#%% Import libraries
 import os
 import sys
 import csv
@@ -31,11 +31,11 @@ logger = logging.getLogger(__name__)
 
 #%% Constants
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-output_dir = os.path.join(project_root, "vnct")
+output_dir = os.path.join(project_root, "vncp")
 best_model = os.path.join(output_dir, "best_model")
 history = os.path.join(output_dir, "training_history.csv")
 log_path = os.path.join(output_dir, "training_log.txt")
-phobert = "vinai/phobert-base"
+phobert = "vinai/phobert-base-v2"
 
 #%% Dataset
 class VNNewsDataset(Dataset):
@@ -215,7 +215,6 @@ def parse_args():
     parser.add_argument("--patience", type=int, default=3)
     parser.add_argument("--val_ratio", type=float, default=0.10)
     return parser.parse_args()
-
 
 def main():
     args = parse_args()

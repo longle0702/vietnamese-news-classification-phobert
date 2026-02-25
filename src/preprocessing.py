@@ -1,4 +1,4 @@
-#%% Imports Libraries
+#%% Imports libraries
 import os
 import unicodedata
 import regex as re
