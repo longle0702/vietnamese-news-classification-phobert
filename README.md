@@ -39,9 +39,9 @@ The model classifies articles into the following 10 Vietnamese news topics:
 
 ```
 vietnamese-news-classification-transformer/
-├── Train_Full/                  # [Ignored] Raw source for Validation + Test data
+├── Train_Full/                  # [Ignored] Raw source for Validation + Test data (Available on request)
 ├── Test_Full/                   # [Ignored] Raw source for Training data*
-├── clean-data/                  # [Ignored] Preprocessed datasets (Available on request)
+├── clean-data/                  # [Ignored] Preprocessed datasets 
 │   ├── train/                   # Processed Validation + Test data (~33k articles)
 │   └── test/                    # Processed Training data (~50k articles)*
 ├── src/
