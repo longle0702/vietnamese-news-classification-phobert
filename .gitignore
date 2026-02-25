@@ -1,0 +1,8 @@
+.venv/
+clean-data/
+.DS_Store
+Test_Full
+Train_Full
+src/__pycache__/
+vnct/
+*.safetensors
