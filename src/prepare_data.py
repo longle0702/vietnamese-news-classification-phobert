@@ -24,7 +24,7 @@ def load_category_files(directory):
             records.append({"text": text, "label_name": cat, "label": label_map[cat]})
     return pd.DataFrame(records), label_map
 
-def split_val_test(df, seed=42):
+def split_val_test(df, seed=36):
     val_df, test_df = train_test_split(
         df,
         test_size=0.5,

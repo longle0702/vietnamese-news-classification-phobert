@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 
 #%% Constants
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-output_dir = os.path.join(project_root, "vncp")
+output_dir = os.path.join(project_root, "phobert-v2")
 best_model = os.path.join(output_dir, "best_model")
 history = os.path.join(output_dir, "training_history.csv")
 log_path = os.path.join(output_dir, "training_log.txt")
@@ -210,10 +210,9 @@ def parse_args():
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--eval_batch_size", type=int, default=64)
     parser.add_argument("--max_len", type=int, default=256)
-    parser.add_argument("--lr", type=float, default=2e-5)
+    parser.add_argument("--lr", type=float, default=1e-5)
     parser.add_argument("--warmup_ratio", type=float, default=0.1)
     parser.add_argument("--patience", type=int, default=3)
-    parser.add_argument("--val_ratio", type=float, default=0.10)
     return parser.parse_args()
 
 def main():
