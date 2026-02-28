@@ -200,11 +200,11 @@ python src/main.py Đội tuyển Việt Nam thắng 2-0 trước Thái Lan tạ
 ```
 Input : Bjorkan đột ngột rời đi, Knutsen từ vị trí trợ lý HLV được bổ nhiệm làm thuyền trưởng...
 ====================================================================================================
-  [1] The thao                   98.81%  |█████████████████████████████░|
+  [1] The thao                   98.84%  |█████████████████████████████░|
   [2] Doi song                    0.24%  |░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
-  [3] Van hoa                     0.21%  |░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
+  [3] Van hoa                     0.19%  |░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
 ====================================================================================================
-→ The thao  (98.81%)
+→ The thao  (98.84%)
 ```
 
 The model always shows the **top-3 predictions** with a confidence bar. The best checkpoint (`phobert-v2/best_model/`) is loaded automatically.
