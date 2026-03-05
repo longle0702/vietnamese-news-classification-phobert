@@ -1,6 +1,7 @@
 # 🇻🇳 Vietnamese News Classification with PhoBERT v2
 
-A Vietnamese news article classifier fine-tuned on **PhoBERT v2** (`vinai/phobert-base-v2`) that categorises articles into **10 topics** with a weighted F1-score of **91.22%** on the held-out test set. This project is an upgraded continuation of my earlier NLP classification work during my Bachelor's studies.
+A Vietnamese news article classifier fine-tuned on **PhoBERT v2** (`vinai/phobert-base-v2`) that categorises articles into **10 topics** with a weighted F1-score of **91.22%** on the held-out test set. This project is an upgraded continuation of my earlier NLP classification work during my Bachelor's studies. The model is publicly available at: https://huggingface.co/longle0702/vietnamese-news-classifier-phobert
+.
 
 ---
 
